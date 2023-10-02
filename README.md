@@ -36,31 +36,32 @@
 </p>
 
 The compilation process has four different steps:
-1. The preprocessing stage
-2. The compiling stage
-3. The assembling stage
-4. The linking stage
+1. Parsing stage
+2. Compilation to Bytecode
+3. Execution
+4. Runtime Optimization
     
-### Step 1: Preprocessing `-E`
-The preprocessor reads the source code and performs various transformations to it:
-- Expanding macros (replacing all of the macros with their values)
-- Handling include files (replaces the #include macro with the content of the header file specified in <>)
-- Removing comments
-- The results in a new file called a translation unit stored in a file with `.i` extension (intermediate)
+### Step 1: Parsing ``
+The Python interpreter reads your Python source code and parses it to create a syntax tree, 
+which is a hierarchical representation of your code's structure. During this phase, 
+Python checks for syntax errors and ensures that your code follows the rules of the Python language.
     
-### Step 2: Compiling `-S`
-The build phase provides us with assembly code that is unique to the target architecture.
+### Step 2: Compilation to Bytecode `-pyc`
+After parsing, the Python code is compiled into bytecode. 
+Bytecode is a low-level representation of your Python code that is easier and faster for the Python interpreter to execute. 
+Python stores this bytecode in .pyc files (compiled Python files) for reuse in subsequent runs, which can speed up the execution of your code.
 
-In this step the compiler takes action by taking a preprocessed file which checks for syntax or structure errors (in case of errors the compilation process stops and displays the corresponding errors). After compiling it, it generates an intermediate code in assembly language `file.s`.
+### Step 3: Execution
+The Python interpreter executes the bytecode. 
+It reads the bytecode instructions one by one and performs the corresponding operations. 
+This is the step where your Python program's logic is executed.
 
-### Step 3: Assembing `-c`
-In the third stage of compilation, an assembler is used to convert assembly language into machine code. The assembler takes the code and generates an object file `file.o`, which contains machine code that is not yet executable because it needs to be mapped to a specific memory address. The linker combines all the object files, resolves references between modules, and corrects the addresses, creating an executable file.
+### Step 4: Runtime Optimization
+Python has a runtime optimizer known as the "Python optimizer" that can make further optimizations while the code is running. This includes things like function inlining and other performance improvements. These optimizations are not always significant, but they can enhance the performance of certain Python code.
 
-### Step 4: Linking
-The linker is an important tool in compilation that performs two tasks: resolution and relocation of symbols. It arranges the pieces of object code so that functions in one piece can successfully call functions in others. The linker also adds parts that contain the instructions for the library functions used by the program. The result of this stage is the executable file. usually `a.out` if `-o` is not specified.
+So, while Python does have a compilation step, it's not the same as the traditional compilation process in languages like C or C++. Python code is not compiled to machine code that can be run independently; instead, it's compiled to bytecode, which is executed by the Python interpreter at runtime. This is one of the reasons Python is often referred to as an interpreted language.
 
 ---
-
 ## Author
 
 - [`@KingBygone0`]() | Software Engineer Student
