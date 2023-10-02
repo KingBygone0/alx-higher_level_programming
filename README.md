@@ -7,7 +7,7 @@
 	Python is EASY
 </h1>
 
->Learning C right now, been wanting to get on this. It's going to be FUN !!.
+>Learning Python right now, been wanting to get on this. It's going to be FUN !!.
 
 >If you need any **help**. Please do not hesitate to get in touch with me in our <a href="https://twitter.com/kingbygone">King on Twitter</a>.
 
