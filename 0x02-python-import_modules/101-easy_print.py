@@ -1,2 +1,2 @@
 #!/usr/bin/python3
-import info101
+import python_is_cool
