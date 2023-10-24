@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# 102-square.py by Isaac Annor
 """My square module"""
 
 
@@ -37,13 +38,13 @@ class Square:
     def __le__(self, other):
         return self.area() <= other.area()
 
-OAOAOA    def __lt__(self, other):
-OAOAOA        return self.area() < other.area()
+    def __lt__(self, other):
+        return self.area() < other.area()
 
-OAOAOA    def __ge__(self, other):
-OAOAOA        return self.area() >= other.area()
-OAOAOA
-OAOAOA    def __ne__(self, other):
+    def __ge__(self, other):
+        return self.area() >= other.area()
+
+    def __ne__(self, other):
         return self.area() != other.area()
 
     def __gt__(self, other):
