@@ -1,38 +1,31 @@
 #!/usr/bin/python3
-"""matrix_divided - div of list of list by an element
+"""
+This is the "2-matrix_divided" module.
 
-   Description: return a list of list with the division by element
-   Return: list of list
+The 2-matrix_divided module supplies one function, matrix_divided(matrix, div).
 """
 
 
 def matrix_divided(matrix, div):
-    """matrix_divided - function.
-       matrix - first value.
-       div - second value."""
-    new = []
-    new.append([])
-    new.append([])
-    i = 0
-    if div is 0:
-        raise ZeroDivisionError("division by zero")
+    """Divides all elements in the matrix by div"""
+    if type(matrix) is not list:
+        raise TypeError(
+            "matrix must be a matrix (list of lists) of integers/floats")
+    size = None
+    for l in matrix:
+        if type(l) is not list:
+            raise TypeError(
+                "matrix must be a matrix (list of lists) of integers/floats")
+        if size is None:
+            size = len(l)
+        elif size != len(l):
+            raise TypeError("Each row of the matrix must have the same size")
+        for i in l:
+            if type(i) is not int and type(i) is not float:
+                raise TypeError("matrix must be a matrix (list of lists) of \
+integers/floats")
     if type(div) is not int and type(div) is not float:
         raise TypeError("div must be a number")
-    try:
-        i = matrix[1][0]
-    except:
-        raise TypeError("matrix must be a matrix\
- (list of lists) of integers/floats")
-    for i in range(0, len(matrix)):
-        for j in range(0, len(matrix[i])):
-            if i > 0 and len(matrix[i]) is not len(matrix[i - 1]):
-                raise TypeError("Each row of the matrix\
- must have the same size")
-            if type(matrix[i][j]) is not int:
-                if type(matrix[i][j]) is not float:
-                    raise TypeError("matrix must be a matrix\
- (list of lists) of integers/floats")
-    for i in range(0, len(matrix)):
-        for j in range(0, len(matrix[i])):
-            new[i].append(round(matrix[i][j] / div, 2))
-    return new
+    if div == 0:
+        raise ZeroDivisionError("division by zero")
+    return [[round(i / div, 2) for i in l] for l in matrix]
