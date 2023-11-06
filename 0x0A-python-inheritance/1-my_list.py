@@ -1,14 +1,9 @@
 #!/usr/bin/python3
-"""Module point 1"""
+"""This module inherits from the list class"""
 
 
 class MyList(list):
-    """Mylist class."""
-
+    """A class that inherits from list"""
     def print_sorted(self):
-        """print_sorted - function.
-           self - object."""
-        l = []
-        l = self.copy()
-        l.sort()
-        print(l)
+        """prints a sorted list"""
+        print(sorted(self))
